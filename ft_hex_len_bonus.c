@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_hex_len_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouizi <obouizi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/29 18:03:26 by obouizi           #+#    #+#             */
-/*   Updated: 2024/12/05 20:49:26 by obouizi          ###   ########.fr       */
+/*   Created: 2024/12/01 14:17:23 by obouizi           #+#    #+#             */
+/*   Updated: 2024/12/05 20:47:58 by obouizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libftprintf_bonus.h"
 
-int	ft_putnbr(int n)
+int	ft_hex_len(unsigned long n)
 {
-	int	count;
+	int	len;
 
-	count = 0;
-	if (n == -2147483648)
-		return (write(1, "-2147483648", 11));
-	if (n < 0)
+	if (n == 0)
+		return (1);
+	len = 0;
+	while (n)
 	{
-		count += ft_putchar('-');
-		n = -n;
+		n /= 16;
+		len++;
 	}
-	if (n >= 10)
-	{
-		count += ft_putnbr(n / 10);
-	}
-	count += ft_putchar((n % 10) + '0');
-	return (count);
+	return (len);
 }

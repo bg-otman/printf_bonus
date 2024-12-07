@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_valid_flag.c                                    :+:      :+:    :+:   */
+/*   ft_valid_specifier_bonus.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouizi <obouizi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/01 14:18:41 by obouizi           #+#    #+#             */
-/*   Updated: 2024/12/05 16:17:55 by obouizi          ###   ########.fr       */
+/*   Created: 2024/12/01 14:18:46 by obouizi           #+#    #+#             */
+/*   Updated: 2024/12/05 20:50:20 by obouizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf_bonus.h"
 
-int	is_valid_flag(char c)
+int	is_valid_specifier(char c)
 {
-	if (c == '-' || (c >= '0' && c <= '9')
-		|| c == ' ' || c == '+' || c == '.' || c == '#')
+	if (c == 'c' || c == 's' || c == 'd' || c == 'i'
+		|| c == 'x' || c == 'X' || c == 'p' || c == 'u')
 		return (1);
 	return (0);
 }

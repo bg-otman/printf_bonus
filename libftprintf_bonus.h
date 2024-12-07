@@ -6,7 +6,7 @@
 /*   By: obouizi <obouizi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 15:14:01 by obouizi           #+#    #+#             */
-/*   Updated: 2024/12/05 16:27:42 by obouizi          ###   ########.fr       */
+/*   Updated: 2024/12/05 19:55:45 by obouizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include <stdarg.h>
-# include <stdio.h>
 
 typedef struct s_flags
 {

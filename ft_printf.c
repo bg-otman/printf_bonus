@@ -1,31 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouizi <obouizi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/23 12:52:20 by obouizi           #+#    #+#             */
-/*   Updated: 2024/12/05 21:12:19 by obouizi          ###   ########.fr       */
+/*   Created: 2024/12/05 16:46:13 by obouizi           #+#    #+#             */
+/*   Updated: 2024/12/05 20:26:25 by obouizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf_bonus.h"
-
-static	int	handle_percent(const char *str, int *i, va_list args)
-{
-	int	temp;
-	int	len;
-
-	temp = handle_format(&str[*i + 1], args);
-	if (temp == -1)
-		return (-1);
-	len = temp;
-	while (!is_valid_specifier(str[*i]))
-		(*i)++;
-	(*i)++;
-	return (len);
-}
+#include "libftprintf.h"
 
 static	int	handle_character(const char *str, int *i)
 {
@@ -34,6 +19,16 @@ static	int	handle_character(const char *str, int *i)
 	len = ft_putchar(str[*i]);
 	(*i)++;
 	return (len);
+}
+
+static	int	handle_percent(const char *str, int *i, va_list args)
+{
+	if (is_valid_specifier(str[*i + 1]))
+	{
+		(*i)++;
+		return (check_specifier(str[*i], args));
+	}
+	return (handle_character(str, i));
 }
 
 static	int	process_format(const char *str, int *i, va_list args)
@@ -45,6 +40,7 @@ static	int	process_format(const char *str, int *i, va_list args)
 		temp = handle_percent(str, i, args);
 		if (temp == -1)
 			return (-1);
+		(*i)++;
 		return (temp);
 	}
 	else

@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_atoi_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouizi <obouizi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/01 14:18:27 by obouizi           #+#    #+#             */
-/*   Updated: 2024/12/05 20:49:55 by obouizi          ###   ########.fr       */
+/*   Created: 2024/08/01 13:55:05 by obouizi           #+#    #+#             */
+/*   Updated: 2024/12/05 20:46:35 by obouizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libftprintf_bonus.h"
 
-size_t	ft_strlen(const char *s)
+long	ft_atoi(const char *str)
 {
-	size_t	i;
+	int		i;
+	long	nb;
 
+	nb = 0;
 	i = 0;
-	if (!s)
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	while (str[i] == '-' || str[i] == '+'
+		|| (str[i] >= 9 && str[i] <= 13) || str[i] == 32 || str[i] == '0'
+		|| str[i] == '#')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		return (i);
-	}
-	while (s[i])
-	{
+		nb = nb * 10 + (str[i] - 48);
 		i++;
 	}
-	return (i);
+	if (nb > 2147483647)
+		return (-1);
+	return (nb);
 }

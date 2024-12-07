@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_print_n_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouizi <obouizi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/29 18:03:26 by obouizi           #+#    #+#             */
-/*   Updated: 2024/12/05 20:49:26 by obouizi          ###   ########.fr       */
+/*   Created: 2024/12/03 13:17:58 by obouizi           #+#    #+#             */
+/*   Updated: 2024/12/05 20:48:16 by obouizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libftprintf_bonus.h"
 
-int	ft_putnbr(int n)
+int	print_n(char c, int n)
 {
-	int	count;
+	int	len;
 
-	count = 0;
-	if (n == -2147483648)
-		return (write(1, "-2147483648", 11));
-	if (n < 0)
+	len = 0;
+	while (len < n)
 	{
-		count += ft_putchar('-');
-		n = -n;
+		len += ft_putchar(c);
 	}
-	if (n >= 10)
-	{
-		count += ft_putnbr(n / 10);
-	}
-	count += ft_putchar((n % 10) + '0');
-	return (count);
+	return (len);
 }

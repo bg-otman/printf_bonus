@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_putunsint_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouizi <obouizi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/29 18:03:26 by obouizi           #+#    #+#             */
-/*   Updated: 2024/12/05 20:49:26 by obouizi          ###   ########.fr       */
+/*   Created: 2024/11/26 09:10:52 by obouizi           #+#    #+#             */
+/*   Updated: 2024/12/05 20:49:40 by obouizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libftprintf_bonus.h"
 
-int	ft_putnbr(int n)
+int	ft_putunsint(unsigned int nb)
 {
 	int	count;
 
 	count = 0;
-	if (n == -2147483648)
-		return (write(1, "-2147483648", 11));
-	if (n < 0)
-	{
-		count += ft_putchar('-');
-		n = -n;
-	}
-	if (n >= 10)
-	{
-		count += ft_putnbr(n / 10);
-	}
-	count += ft_putchar((n % 10) + '0');
+	if (nb >= 10)
+		count += ft_putunsint(nb / 10);
+	count += ft_putchar((nb % 10) + '0');
 	return (count);
 }

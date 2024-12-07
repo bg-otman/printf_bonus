@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nbr_len.c                                       :+:      :+:    :+:   */
+/*   ft_puthex_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouizi <obouizi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/01 14:17:27 by obouizi           #+#    #+#             */
-/*   Updated: 2024/12/05 16:10:14 by obouizi          ###   ########.fr       */
+/*   Created: 2024/11/25 17:42:43 by obouizi           #+#    #+#             */
+/*   Updated: 2024/12/05 20:49:09 by obouizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf_bonus.h"
 
-int	ft_nbr_len(int nb)
+int	ft_puthex(unsigned int nb, char *hex)
 {
-	int	len;
+	int	count;
 
-	if (nb == 0)
-		return (1);
-	len = 0;
-	if (nb < 0)
-	{
-		len++;
-		nb = -nb;
-	}
-	while (nb != 0)
-	{
-		nb /= 10;
-		len++;
-	}
-	return (len);
+	count = 0;
+	if (nb >= 16)
+		count += ft_puthex(nb / 16, hex);
+	count += ft_putchar(hex[nb % 16]);
+	return (count);
 }

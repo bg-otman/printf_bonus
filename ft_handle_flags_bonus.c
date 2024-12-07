@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_handle_flags.c                                  :+:      :+:    :+:   */
+/*   ft_handle_flags_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouizi <obouizi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 14:16:56 by obouizi           #+#    #+#             */
-/*   Updated: 2024/12/05 16:05:43 by obouizi          ###   ########.fr       */
+/*   Updated: 2024/12/06 09:22:39 by obouizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	handle_flags(const char *str, va_list args)
 
 	intialize_flags(&flags);
 	parse_flags(str, &flags, args);
-	if (flags.width == -1)
+	if (flags.width == -1 || flags.precision == -1)
 		return (-1);
 	return (ft_handle_priority(&flags, args, flags.has_precision));
 }

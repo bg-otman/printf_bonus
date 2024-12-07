@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_handle_width.c                                  :+:      :+:    :+:   */
+/*   ft_strlen_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouizi <obouizi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/03 13:09:09 by obouizi           #+#    #+#             */
-/*   Updated: 2024/12/05 16:07:44 by obouizi          ###   ########.fr       */
+/*   Created: 2024/12/01 14:18:27 by obouizi           #+#    #+#             */
+/*   Updated: 2024/12/05 20:49:51 by obouizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf_bonus.h"
 
-int	handle_width(t_flags *flags, va_list args)
+size_t	ft_strlen(const char *s)
 {
-	int	len;
+	size_t	i;
 
-	len = 0;
-	if (flags->width == -1)
-		return (-1);
-	len = get_len(flags->specifier, args);
-	if (len == -1)
-		return (-1);
-	while (len < flags->width)
+	i = 0;
+	if (!s)
 	{
-		ft_putchar(' ');
-		len++;
+		return (i);
 	}
-	if (flags->plus)
-		len += print_flag(flags, '+');
-	check_specifier(flags->specifier, args);
-	return (len);
+	while (s[i])
+	{
+		i++;
+	}
+	return (i);
 }

@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_get_len_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouizi <obouizi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/29 18:03:26 by obouizi           #+#    #+#             */
-/*   Updated: 2024/12/05 20:49:26 by obouizi          ###   ########.fr       */
+/*   Created: 2024/12/03 13:10:46 by obouizi           #+#    #+#             */
+/*   Updated: 2024/12/05 20:47:25 by obouizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libftprintf_bonus.h"
 
-int	ft_putnbr(int n)
+int	get_len(char specifier, va_list args)
 {
-	int	count;
+	va_list	args_copy;
+	int		len;
 
-	count = 0;
-	if (n == -2147483648)
-		return (write(1, "-2147483648", 11));
-	if (n < 0)
-	{
-		count += ft_putchar('-');
-		n = -n;
-	}
-	if (n >= 10)
-	{
-		count += ft_putnbr(n / 10);
-	}
-	count += ft_putchar((n % 10) + '0');
-	return (count);
+	va_copy(args_copy, args);
+	len = get_arg_len(specifier, args_copy);
+	va_end(args_copy);
+	return (len);
 }

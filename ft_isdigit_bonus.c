@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_handle_minus.c                                  :+:      :+:    :+:   */
+/*   ft_isdigit_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouizi <obouizi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/04 15:36:08 by obouizi           #+#    #+#             */
-/*   Updated: 2024/12/05 15:55:32 by obouizi          ###   ########.fr       */
+/*   Created: 2024/12/02 09:14:49 by obouizi           #+#    #+#             */
+/*   Updated: 2024/12/05 20:48:05 by obouizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf_bonus.h"
 
-int	handle_minus(t_flags *flags, va_list args)
+int	ft_isdigit(int c)
 {
-	int	len;
-
-	len = 0;
-	if (!flags->dash)
-		len = check_specifier(flags->specifier, args);
-	while (len < flags->width)
-	{
-		ft_putchar(' ');
-		len++;
-	}
-	return (len);
+	return (c >= '0' && c <= '9');
 }

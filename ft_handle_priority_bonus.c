@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_handle_priority.c                               :+:      :+:    :+:   */
+/*   ft_handle_priority_bonus.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouizi <obouizi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 15:04:47 by obouizi           #+#    #+#             */
-/*   Updated: 2024/12/05 16:04:24 by obouizi          ###   ########.fr       */
+/*   Updated: 2024/12/06 09:54:37 by obouizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,6 @@ int	handle_plus_priority(t_flags *flags, va_list args)
 		else if (flags->zero && !flags->dash && !flags->has_precision)
 			len += handle_zero(flags, args);
 	}
-	else if (flags->minus && !flags->dash && !flags->has_precision)
-		len += handle_minus(flags, args);
-	else if (flags->zero && !flags->dash && !flags->has_precision)
-		len += handle_zero(flags, args);
 	return (len);
 }
 
